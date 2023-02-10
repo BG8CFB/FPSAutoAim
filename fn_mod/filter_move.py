@@ -72,18 +72,18 @@ def Move(res_data):
 
     move_x = 0
     move_y = 0
-    move_default = 4
+    move_speed = 4
     if res_y > 0:
-        move_y = move_default
+        move_y = move_speed
     elif res_y < 0:
-        move_y = -1 * move_default
+        move_y = -1 * move_speed
     elif res_y == 0:
         move_y = 0
 
     if res_x > 0:
-        move_x = move_default
+        move_x = move_speed
     elif res_x < 0:
-        move_x = -1 * move_default
+        move_x = -1 * move_speed
     elif res_x == 0:
         move_x = 0
     driver.moveR(int(move_x), int(move_y), True)

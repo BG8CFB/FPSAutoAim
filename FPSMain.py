@@ -44,7 +44,7 @@ def monitor(init_data):
 def FilterMove(init_data):
     import time
     # 数据过滤和移动鼠标
-    from utils.filter_move import FilterMove
+    from fn_mod.filter_move import FilterMove
     while True:
         time.sleep(0.001)
         if len(init_data['detect_res']) & init_data['fire_state']:
@@ -56,7 +56,7 @@ def ScreenshotDetect(init_data, debug=False):
     import time
     import cv2
     import detect_api
-    from utils.FPSUtils import ScreenShout
+    from fn_mod.screenshot import ScreenShout
     DETECT_API = detect_api.detectapi(weights='weights/ow_jqr_01.pt')
 
     while True:
@@ -85,9 +85,8 @@ if __name__ == '__main__':
         manager = Manager()
         init_data = manager.dict()  # 创建进程安全的共享变量
         init_data.update(init)  # 将初始数据导入到共享变量
-        # 鼠标监听
-        monitor_process = Process(target=monitor, args=(init_data,))
-        filter_move = Process(target=FilterMove, args=(init_data,))
+        monitor_process = Process(target=monitor, args=(init_data,))  # 监听按键
+        filter_move = Process(target=FilterMove, args=(init_data,))  # 结果筛选和移动
         monitor_process.start()
         filter_move.start()
         ScreenshotDetect(init_data, debug=True)
