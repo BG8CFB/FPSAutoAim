@@ -10,12 +10,14 @@ SCREENSHOT_W = 640  # 截图区域长
 SCREENSHOT_H = 640  # 截图区域高
 LEFT = SCREEN_CX - SCREENSHOT_W // 2  # 检测框左上角x
 TOP = SCREEN_CY - SCREENSHOT_H // 2  # 检测框左上角y
-monitor = {'top': 220, 'left': 640, 'width': 640, 'height': 640}
 
-# 截图
-def ScreenShout():
-    return np.array(mss.mss().grab(monitor))
-    # return np.array(pyautogui.screenshot(region=[LEFT, TOP, SCREENSHOT_W, SCREENSHOT_H]))
+
+def Screenshot():
+    # 截图
+    img = mss.mss().grab(monitor={'top': TOP, 'left': LEFT, 'width': SCREENSHOT_W, 'height': SCREENSHOT_H})
+
+    return np.array(img)
+
 
 
 

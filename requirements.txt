@@ -35,3 +35,4 @@ thop~=0.1.1-2209072238
 # roboflow
 
 pyautogui~=0.9.53
+mss~=7.0.1
